@@ -1,32 +1,36 @@
-import random
-import os
-import re
+from random import randint
 
-os.system('cls' if os.name == 'nt' else 'clear')
-while 1 < 2:
-    print("\n")
-    print("Rock, Paper, Scissors - Shoot!")
-    userChoice = input("Choose your weapon [R]ock], [P]aper, or [S]cissors: ")
-    if not re.match("[SsRrPp]", userChoice):
-        print("Please choose a letter:")
-        print("[R]ock, [S]cissors or [P]aper.")
-        continue
 
-    print("You chose: " + userChoice)
-    choices = ['R', 'P', 'S']
-    Opponent = random.choice(choices)
-    print("I chose: " + Opponent)
-    if Opponent == str.upper(userChoice):
-        print("Tie! ")
-    # if Opponent == str("R") and str.upper(userChoice) == "P"
-    elif Opponent == 'R' and userChoice.upper() == 'S':
-        print("Scissors beats rock, I win! ")
-        continue
-    elif Opponent == 'S' and userChoice.upper() == 'P':
-        print("Scissors beats paper! I win! ")
-        continue
-    elif Opponent == 'P' and userChoice.upper() == 'R':
-        print("Paper beat rock, I win! ")
-        continue
+t = ["Rock", "Paper", "Scissors"]
+
+
+computer = t[randint(0, 2)]
+
+
+player = False
+
+while not player:
+
+    player = input("Rock, Paper, Scissors?")
+    if player == computer:
+        print("Tie!")
+    elif player == "Rock":
+        if computer == "Paper":
+            print("You lose!", computer, "covers", player)
+        else:
+            print("You win!", player, "smashes", computer)
+    elif player == "Paper":
+        if computer == "Scissors":
+            print("You lose!", computer, "cut", player)
+        else:
+            print("You win!", player, "covers", computer)
+    elif player == "Scissors":
+        if computer == "Rock":
+            print("You lose...", computer, "smashes", player)
+        else:
+            print("You win!", player, "cut", computer)
     else:
-        print("You win!")
+        print("That's not a valid play. Check your spelling!")
+
+    player = False
+    computer = t[randint(0, 2)]
