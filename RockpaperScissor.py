@@ -30,7 +30,7 @@ while not player:
         else:
             print("You win!", player, "cut", computer)
     else:
-        print("That's not a valid play. Check your spelling!")
+        print("Check your spelling!")
 
     player = False
     computer = t[randint(0, 2)]
